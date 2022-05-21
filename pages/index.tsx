@@ -1,5 +1,6 @@
 import React from "react"
 import { GetServerSideProps } from "next"
+import { Menu } from '../components'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const feed = [
@@ -16,7 +17,7 @@ type Props = {
 
 const Blog: React.FC<Props> = (props) => {
   return (
-    <h1>oi</h1>
+    <Menu />
   )
 }
 
