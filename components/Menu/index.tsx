@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from 'react'
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles'
 
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 
 //componentes
 import {
@@ -15,21 +15,20 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography
-} from '@mui/material/';
-
+  Typography,
+} from '@mui/material/'
 
 //icons
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import InventoryIcon from '@mui/icons-material/Inventory';
+import MenuIcon from '@mui/icons-material/Menu'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import InventoryIcon from '@mui/icons-material/Inventory'
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
+  open?: boolean
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -47,7 +46,7 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
-}));
+}))
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -56,7 +55,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
-}));
+}))
 
 export function Menu() {
   const theme = createTheme({
@@ -68,22 +67,21 @@ export function Menu() {
         main: '#6EEB83',
       },
     },
-  });
-  const [open, setOpen] = React.useState(false);
+  })
+  const [open, setOpen] = React.useState(false)
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
-
-        <AppBar position="fixed" open={open} color='primary'>
+        <AppBar position="fixed" open={open} color="primary">
           <Toolbar>
             <IconButton
               color="inherit"
@@ -114,7 +112,11 @@ export function Menu() {
         >
           <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'ltr' ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
             </IconButton>
           </DrawerHeader>
           <Divider />
@@ -123,7 +125,11 @@ export function Menu() {
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InventoryIcon color='secondary'/> : <ShoppingBasketIcon color='secondary'/>}
+                    {index % 2 === 0 ? (
+                      <InventoryIcon color="secondary" />
+                    ) : (
+                      <ShoppingBasketIcon color="secondary" />
+                    )}
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
@@ -134,5 +140,5 @@ export function Menu() {
         </Drawer>
       </Box>
     </ThemeProvider>
-  );
+  )
 }
