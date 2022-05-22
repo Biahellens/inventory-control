@@ -26,18 +26,6 @@ import AddCircleIcon from '@mui/icons-material/AddCircle'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 
 export const CardProduct = () => {
-  const [statusModal, setStateModal] = useState(false)
-  const [editMode, setEditMode] = useState(false)
-
-  function closeModal(): void {
-    setStateModal(false)
-    setEditMode(false)
-  }
-
-  function openModalEdit() {
-    setEditMode(true)
-    setStateModal(true)
-  }
   const theme = createTheme({
     palette: {
       primary: {
@@ -49,13 +37,13 @@ export const CardProduct = () => {
     },
   })
 
-  return (<Container width={[1, 1 / 2, 1 / 4]}>
+  return (
     <ThemeProvider theme={theme}>
-
       <Card
         style={{
           borderRadius: 25,
-          width: 320,
+          minWidth: 300,
+          maxWidth: 320,
           borderColor: 'primary',
           border: 2,
         }}
@@ -68,10 +56,10 @@ export const CardProduct = () => {
         >
           <Flex justifyContent='flex-end'>
             <Box width={[1 / 3]} >
-            <IconButton>
+              <IconButton>
                 <DeleteIcon fontSize="medium" color="warning" />
               </IconButton>
-              <IconButton onClick={() => openModalEdit()}>
+              <IconButton>
                 <EditIcon fontSize="medium" color="primary" />
               </IconButton>
             </Box>
@@ -105,7 +93,7 @@ export const CardProduct = () => {
               <Typography variant="overline">
                 4
               </Typography>
-              <IconButton onClick={() => openModalEdit()}>
+              <IconButton>
                 <AddCircleIcon fontSize="small" color="primary" />
               </IconButton>
             </Box>
@@ -113,7 +101,6 @@ export const CardProduct = () => {
           </Flex>
         </CardContent>
       </Card>
-
-    </ ThemeProvider></Container>
+    </ ThemeProvider>
   )
 }
