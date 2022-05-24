@@ -3,7 +3,7 @@ import React from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 //componentes
-import { AppBar, Typography, Toolbar } from '@mui/material'
+import { AppBar, Button, Typography, Toolbar } from '@mui/material'
 
 import { SelectField, TextField } from '../../components'
 
@@ -18,6 +18,10 @@ export const CreateProductPage = () => {
       },
       secondary: {
         main: '#6EEB83',
+      },
+
+      warning: {
+        main: '#FF5714',
       },
     },
   })
@@ -72,7 +76,7 @@ export const CreateProductPage = () => {
               </Typography>
               <TextField defaultValue="1" />
             </Container>
-            
+
             <Container width={[1, 1 / 2]}>
               <Typography variant="h5" noWrap component="div" color="primary">
                 Medida(kg, g, unidade)
@@ -85,6 +89,23 @@ export const CreateProductPage = () => {
             </Container>
           </Wrapper>
         </form>
+        <Container>
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ margin: '1vh', height: '5vh', borderRadius: '4vh' }}
+          >
+            Cancelar
+          </Button>
+
+          <Button
+            variant="contained"
+            color="warning"
+            style={{ margin: '1vh', height: '5vh', borderRadius: '4vh' }}
+          >
+            Salvar
+          </Button>
+        </Container>
       </Container>
     </ThemeProvider>
   )
