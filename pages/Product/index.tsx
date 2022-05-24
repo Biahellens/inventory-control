@@ -1,20 +1,14 @@
 // dependencies
-import React from 'react';
+import React, { useState } from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 //componentes
-import { Button, Divider, IconButton, Typography } from '@mui/material';
+import { Box, Button, IconButton, Modal, Typography } from '@mui/material'
 
-import {
-  CardProduct,
-  Menu
-} from '../../components'
+import { CardProduct, Menu, ModalInventory } from '../../components'
 
 //style
-import {
-  Wrapper,
-  Container
-} from './style'
+import { Wrapper, Container } from './style'
 
 //icons
 import AddCircleIcon from '@mui/icons-material/AddCircle'
@@ -32,6 +26,13 @@ export const ProductPage = () => {
       },
     },
   })
+
+  const [stateModalInventory, setStateModalInventory] = useState(false)
+
+  function closeModal(): void {
+    setStateModalInventory(false)
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
@@ -39,17 +40,18 @@ export const ProductPage = () => {
           <Menu />
         </Container>
 
-        <Container marginTop='4vh' justifyContent="center" width={[1]}>
+        <Container marginTop="4vh" justifyContent="center" width={[1]}>
           <Container>
             <Button
               variant="contained"
               color="secondary"
               style={{ margin: '1vh', height: '5vh', borderRadius: '4vh' }}
+              onClick={() => setStateModalInventory(true)}
             >
               <IconButton>
                 <AddCircleIcon />
-                  Adicionar Estoque
-                </IconButton>
+                Adicionar Estoque
+              </IconButton>
             </Button>
           </Container>
           <Container>
@@ -60,13 +62,13 @@ export const ProductPage = () => {
             >
               <IconButton>
                 <AddCircleIcon />
-                  Adicionar Produto
-                </IconButton>
+                Adicionar Produto
+              </IconButton>
             </Button>
           </Container>
         </Container>
         <Container width={[1]} justifyContent="center">
-          <Typography variant="h3" color='primary' width={[1]}>
+          <Typography variant="h3" color="primary" width={[1]}>
             Estoque de Frutas
             <IconButton>
               <DeleteIcon fontSize="medium" color="warning" />
@@ -78,20 +80,25 @@ export const ProductPage = () => {
 
           <Container justifyContent="space-around">
             <Container>
-              <CardProduct/>
+              <CardProduct />
             </Container>
             <Container>
-              <CardProduct/>
+              <CardProduct />
             </Container>
             <Container>
-              <CardProduct/>
+              <CardProduct />
             </Container>
             <Container>
-              <CardProduct/>
+              <CardProduct />
             </Container>
-            </Container>
+          </Container>
         </Container>
+        <ModalInventory
+        newResource={true}
+        open={stateModalInventory}
+        handleClose={closeModal}
+      />
       </Wrapper>
     </ThemeProvider>
-  );
-};
+  )
+}
