@@ -1,23 +1,25 @@
 import React from "react"
-import { GetServerSideProps } from "next"
-import { Menu } from '../components'
+import { GetStaticProps } from "next"
+import prisma from '../lib/prisma';
+import { ProductPage } from './Product'
+//import { CreateProductPage } from './CreatedProduct'
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const feed = [
-    {
-      id: "1",
+/*export const getStaticProps: GetStaticProps = async () => {
+  const inventory = await prisma.product.findMany({
+    where: { published: true },
+    include: {
+      author: {
+        select: { name: true },
+      },
     },
-  ]
-  return { props: { feed } }
-}
+  });
+  return { props: { inventory } };
+}*/
 
-type Props = {
-  feed: ''
-}
 
-const Blog: React.FC<Props> = (props) => {
+const Blog: React.FC = (props) => {
   return (
-    <Menu />
+    <ProductPage />
   )
 }
 
