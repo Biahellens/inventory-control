@@ -121,15 +121,11 @@ export function Menu() {
           </DrawerHeader>
           <Divider />
           <List>
-            {['Estoques', 'Produtos'].map((text, index) => (
+            {['Estoques'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? (
-                      <InventoryIcon color="secondary" />
-                    ) : (
-                      <ShoppingBasketIcon color="secondary" />
-                    )}
+                    <InventoryIcon color="secondary" />
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
